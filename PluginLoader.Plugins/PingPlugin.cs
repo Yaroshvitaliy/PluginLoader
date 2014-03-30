@@ -8,7 +8,7 @@ namespace PluginLoader.Plugins
     using AsyncEventAggregator;
 
     [Export(typeof(IPlugin))]
-    [PartCreationPolicy(CreationPolicy.NonShared)]
+    [PartCreationPolicy(CreationPolicy.Shared)]
     [ExportMetadata("PluginType", "PingPlugin")]
     [ExportMetadata("PluginPurpose", "Game")]
     public class PingPlugin: IPlugin
@@ -17,7 +17,7 @@ namespace PluginLoader.Plugins
 
         public void Start()
         {
-            this.Publish(new Ping { Message = "Ping!" }.AsTask());
+            this.Publish(new Ping { Sender = this.PluginId, Message = "Ping!" }.AsTask());
         }
 
         public PingPlugin()
@@ -27,8 +27,8 @@ namespace PluginLoader.Plugins
                 async p =>
                     {
                         Console.WriteLine(p.Result.Message);
-                        await Task.Delay(1000);
-                        await this.Publish(new Ping { Message = "Ping!" }.AsTask());
+                        await Task.Delay(2000);
+                        await this.Publish(new Ping { Sender = this.PluginId, Message = "Ping!" }.AsTask());
                     }
                 );
         }

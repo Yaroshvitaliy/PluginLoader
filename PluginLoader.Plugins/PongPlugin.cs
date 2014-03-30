@@ -8,7 +8,7 @@ namespace PluginLoader.Plugins
     using AsyncEventAggregator;
 
     [Export(typeof(IPlugin))]
-    [PartCreationPolicy(CreationPolicy.NonShared)]
+    [PartCreationPolicy(CreationPolicy.Shared)]
     [ExportMetadata("PluginType", "PongPlugin")]
     [ExportMetadata("PluginPurpose", "Game")]
     public class PongPlugin : IPlugin
@@ -17,7 +17,7 @@ namespace PluginLoader.Plugins
 
         public void Start()
         {
-            this.Publish(new Pong { Message = "Pong!" }.AsTask());
+            this.Publish(new Pong { Sender = this.PluginId, Message = "Pong!" }.AsTask());
         }
 
         public PongPlugin()
@@ -28,7 +28,7 @@ namespace PluginLoader.Plugins
                     {
                         Console.WriteLine(p.Result.Message);
                         await Task.Delay(500);
-                        await this.Publish(new Pong { Message = "Pong!\r\n" }.AsTask());
+                        await this.Publish(new Pong { Sender = this.PluginId, Message = "Pong!" }.AsTask());
                     });
         }
     }

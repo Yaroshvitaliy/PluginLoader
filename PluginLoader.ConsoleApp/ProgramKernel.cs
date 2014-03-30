@@ -5,6 +5,9 @@
     using System.IO;
     using System.Linq;
     using System.Reflection;
+    using System.Threading.Tasks;
+
+    using AsyncEventAggregator;
 
     using Plugin;
 
@@ -13,6 +16,11 @@
     public class ProgramKernel
     {
         private readonly PluginHub<IPlugin> pluginHub = new PluginHub<IPlugin>();
+
+        public ProgramKernel()
+        {
+            this.RegisterSubscribers();
+        }
 
         public void TypeImports()
         {
@@ -86,6 +94,24 @@
                 Console.WriteLine("Type: {0},\r\nId: {1}", plugin.GetType(), plugin.PluginId);
                 Console.WriteLine();
             }
+        }
+
+        private void RegisterSubscribers()
+        {
+            this.Subscribe<Ping>(
+                async p =>
+                    {
+                        var ping = p.Result;
+                        Console.WriteLine();
+                        Console.WriteLine("Sender: {0}, Message: {1}", ping.Sender, ping.Message);
+                    });
+            this.Subscribe<Pong>(
+                async p =>
+                    {
+                        var pong = p.Result;
+                        Console.WriteLine();
+                        Console.WriteLine("Sender: {0}, Message: {1}", pong.Sender, pong.Message);
+                    });
         }
     }
 }
