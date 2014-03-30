@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using System.Reflection;
 
     using Plugin;
@@ -40,20 +41,21 @@
 
             var pluginsPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + pluginsDirName;
 
-            //try
-            //{
-            //    if (!Directory.Exists(pluginsPath))
-            //    {
-            //        Directory.CreateDirectory(pluginsPath);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //}
-
             this.pluginHub.Container.DirectoryImports(pluginsPath);
 
             this.PrintPlugins();
+        }
+
+        public void StartGame()
+        {
+            var pingPlugins = this.pluginHub.GetPluginsByMetadata("PluginType", "PingPlugin").ToList();
+            
+            if (!pingPlugins.Any())
+            {
+                return;
+            }
+            
+            pingPlugins.ForEach(p => p.Start());
         }
 
         private void PrintPlugins()

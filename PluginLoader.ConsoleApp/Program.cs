@@ -1,13 +1,10 @@
-﻿using Plugin;
-using System;
+﻿using System;
 
 namespace PluginLoader.ConsoleApp
 {
-    using PluginLoader.Plugins;
-
     class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("1 - Type imports");
             Console.WriteLine("2 - Assembly imports");
@@ -19,7 +16,7 @@ namespace PluginLoader.ConsoleApp
             Console.WriteLine("");
 
             var programKernel = new ProgramKernel();
-            
+
             switch (choise)
             {
                 case "1":
@@ -33,9 +30,10 @@ namespace PluginLoader.ConsoleApp
                     break;
             }
 
+            programKernel.StartGame();
+
             Console.WriteLine();
             Console.WriteLine("Press any key to exit");
-
             Console.ReadLine();
         }
     }
