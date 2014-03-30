@@ -47,7 +47,6 @@
     <Compile Include="Pong.cs" />
     <Compile Include="PongPlugin.cs" />
     <Compile Include="IPlugin.cs" />
-    <Compile Include="ISubPlugin.cs" />
     <Compile Include="PingPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

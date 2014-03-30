@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>EventAggregator</id>
+    <version>1.0.0</version>
+    <title>Asynchronous Event Aggregator</title>
+    <authors>Timothy Makarov</authors>
+    <owners>Timothy Makarov</owners>
+    <projectUrl>https://github.com/timothy-makarov/AsyncEventAggregator</projectUrl>
+    <iconUrl>http://download-codeplex.sec.s-msft.com/Download?ProjectName=eventaggregator&amp;DownloadId=365562&amp;Build=20006</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Event Aggregator aggregates events from multiple objects into itself, passing that same event onto its observers.</description>
+    <releaseNotes />
+    <copyright />
+    <language />
+    <tags>Event Aggregator Async TPL Publish Subscribe</tags>
+    <references>
+      <reference file="AsyncEventAggregator.dll" />
+    </references>
+  </metadata>
+</package>
