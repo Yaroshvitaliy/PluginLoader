@@ -1,19 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{56358D2D-A69D-4595-8989-D7F6D87A15BF}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{0A9AF5FF-F732-4E0A-8402-2F8F26AC5C70}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PluginLoader.ConsoleApp</RootNamespace>
-    <AssemblyName>PluginLoader.ConsoleApp</AssemblyName>
+    <RootNamespace>PluginLoader.Plugins</RootNamespace>
+    <AssemblyName>PluginLoader.Plugins</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -42,24 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
-    <Compile Include="ProgramKernel.cs" />
+    <Compile Include="PongPlugin.cs" />
+    <Compile Include="IPlugin.cs" />
+    <Compile Include="ISubPlugin.cs" />
+    <Compile Include="PingPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PluginLoader.Plugins\PluginLoader.Plugins.csproj">
-      <Project>{0a9af5ff-f732-4e0a-8402-2f8f26ac5c70}</Project>
-      <Name>PluginLoader.Plugins</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Plugin\Plugin.csproj">
-      <Project>{de3cb1d1-1718-4d67-afe3-e237bfc7e996}</Project>
-      <Name>Plugin</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if not exist $(SolutionDir)PluginLoader.ConsoleApp\$(OutDir)Plugins mkdir $(SolutionDir)PluginLoader.ConsoleApp\$(OutDir)Plugins
+copy /y "$(TargetPath)" "$(SolutionDir)PluginLoader.ConsoleApp\$(OutDir)Plugins"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginLoader.ConsoleApp", "PluginLoader.ConsoleApp\PluginLoader.ConsoleApp.csproj", "{56358D2D-A69D-4595-8989-D7F6D87A15BF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frameworks", "Frameworks", "{2D30983B-E718-4F62-964A-2306050B837C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin", "Plugin\Plugin.csproj", "{DE3CB1D1-1718-4D67-AFE3-E237BFC7E996}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginLoader.Plugins", "PluginLoader.Plugins\PluginLoader.Plugins.csproj", "{0A9AF5FF-F732-4E0A-8402-2F8F26AC5C70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +19,19 @@ Global
 		{56358D2D-A69D-4595-8989-D7F6D87A15BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56358D2D-A69D-4595-8989-D7F6D87A15BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56358D2D-A69D-4595-8989-D7F6D87A15BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE3CB1D1-1718-4D67-AFE3-E237BFC7E996}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE3CB1D1-1718-4D67-AFE3-E237BFC7E996}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE3CB1D1-1718-4D67-AFE3-E237BFC7E996}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE3CB1D1-1718-4D67-AFE3-E237BFC7E996}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A9AF5FF-F732-4E0A-8402-2F8F26AC5C70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A9AF5FF-F732-4E0A-8402-2F8F26AC5C70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A9AF5FF-F732-4E0A-8402-2F8F26AC5C70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A9AF5FF-F732-4E0A-8402-2F8F26AC5C70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DE3CB1D1-1718-4D67-AFE3-E237BFC7E996} = {2D30983B-E718-4F62-964A-2306050B837C}
 	EndGlobalSection
 EndGlobal
